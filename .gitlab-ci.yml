@@ -12,10 +12,10 @@ docker-build-master:
     - umask 0022
     - umask
     - chmod -R og-w .
-    - docker build -t jgoerzen/nncp .
-    - docker tag jgoerzen/nncp jgoerzen/nncp:8.5.0
-    - docker push jgoerzen/nncp
-    - docker push jgoerzen/nncp:8.5.0
+    - docker build -t jgoerzen/uucp .
+    - docker tag jgoerzen/uucp jgoerzen/uucp:bullseye
+    - docker push jgoerzen/uucp
+    - docker push jgoerzen/uucp:bullseye
   only:
     - main
 
