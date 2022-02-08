@@ -1,5 +1,7 @@
 # uucp
 
+**This project is no longer hosted on Github.  See its [new homepage on Salsa](https://salsa.debian.org/jgoerzen/docker-uucp).**
+
 This Docker image provides a base of support for UUCP.  It includes
 everything you'll need to set up a UUCP-over-TCP node, whether you use
 basic unencrypted commnuication or some other channel like TLS or
@@ -19,26 +21,40 @@ And run with something like this:
     -v /uucp:/var/spool/uucp:rw \
     --name=uucp jgoerzen/uucp
 
+On a more modern host (Debian bullseye or newer), use:
+
+    docker run -td \
+    --stop-signal=SIGRTMIN+3 \
+    --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
+    -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
+    --cgroupns=host \
+    --hostname=uucp \
+    -v /uucp:/var/spool/uucp:rw \
+    --name=uucp jgoerzen/uucp
+
 You will almost certainly want to preserve `/var/spool/uucp` and
 possibly also `/etc/uucp` between container builds.  
 
 # Logging
 
 Logging can be done either to Docker or in the container; see `DEBBASE_SYSLOG` as
-documented in the [docker-debian-base docs](https://github.com/jgoerzen/docker-debian-base).
+documented in the [docker-debian-base docs](https://salsa.debian.org/jgoerzen/docker-debian-base).
 
 # Source
 
 This is prepared by John Goerzen <jgoerzen@complete.org> and the source
-can be found at https://github.com/jgoerzen/docker-uucp
+can be found at https://salsa.debian.org/jgoerzen/docker-uucp
 
 # Security Status
 
 The Debian operating system is configured to automatically apply security patches.
 
+UUCP itself is barely maintained anymore and has a security model from an earlier era.  Do not expect perfect security from it.  For a more modern approach,
+you might want my [NNCP docker image](https://salsa.debian.org/jgoerzen/docker-nncp).
+
 # Copyright
 
-Docker scripts, etc. are Copyright (c) 2019 John Goerzen.  
+Docker scripts, etc. are Copyright (c) 2019-2022 John Goerzen.  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
