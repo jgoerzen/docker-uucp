@@ -17,5 +17,5 @@ docker-build-master:
     - docker push jgoerzen/uucp
     - docker push jgoerzen/uucp:bullseye
   only:
-    - main
+    - master
 
