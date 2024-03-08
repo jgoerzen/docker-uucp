@@ -1,4 +1,4 @@
-FROM jgoerzen/debian-base-security:bullseye
+FROM jgoerzen/debian-base-security:bookworm
 MAINTAINER John Goerzen <jgoerzen@complete.org>
 RUN mv /usr/sbin/policy-rc.d.disabled /usr/sbin/policy-rc.d && \
     apt-get update && \

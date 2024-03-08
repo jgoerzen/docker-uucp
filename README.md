@@ -11,17 +11,7 @@ You can download with:
 
     docker pull jgoerzen/uucp
 
-And run with something like this:
-
-    docker run -td \
-    --stop-signal=SIGRTMIN+3 \
-    --tmpfs /run:size=100M --tmpfs /run/lock:size=100M \
-    -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
-    --hostname=uucp \
-    -v /uucp:/var/spool/uucp:rw \
-    --name=uucp jgoerzen/uucp
-
-On a more modern host (Debian bullseye or newer), use:
+And run with:
 
     docker run -td \
     --stop-signal=SIGRTMIN+3 \
@@ -54,7 +44,7 @@ you might want my [NNCP docker image](https://salsa.debian.org/jgoerzen/docker-n
 
 # Copyright
 
-Docker scripts, etc. are Copyright (c) 2019-2022 John Goerzen.  
+Docker scripts, etc. are Copyright (c) 2019-2024 John Goerzen.  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
